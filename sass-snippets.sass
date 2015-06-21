@@ -1,0 +1,23 @@
+$xs-width: 480px
+$md-width: 780px
+
+// ========================================================
+//                           Mixins
+// ========================================================
+
+@mixin media($break-point: $xs-width, $min-max: max, $measure: width)
+  @media all and (#{$min-max}-#{$measure}: $break-point)
+    @content
+
+// Ejemplo de uso:
+//  html, body
+//    @include media($md-width)
+//      height: 50%
+// Result
+//  @media all and (max-width: 780px) {
+//      html, body {
+//         height: 50%;
+//      }
+//  }
+// ========================================================
+// ========================================================
