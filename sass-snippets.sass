@@ -1,13 +1,23 @@
-$xs-width: 480px
-$md-width: 780px
-
+// == Anchos base media queries
+$xs-width: 480 * 1px
+$sm-width: 768 * 1px
+$md-width: 992 * 1px
+$lg-width: 1200 * 1px
+$map-break-points: ( xs-width: $xs-width, sm-width: $sm-width, md-width: $md-width, lg-width: $lg-width )
 // ========================================================
 //                           Mixins
 // ========================================================
 
-@mixin media($break-point: $xs-width, $min-max: max, $measure: width)
-  @media all and (#{$min-max}-#{$measure}: $break-point)
-    @content
+/// Mixin para generar media queries asocidado a un elemento
+/// @param {string} $break-point [xs-width] Medida en píxeles del punto de ruptura
+/// @param {string} $min-max [max] aplica min o max width
+/// @param {string} $measure [width] Por defecto se aplica al ancho
+@mixin media($break-point: map-get($map-break-points, xs-width), $min-max: max, $measure: width)
+  @if map-has-key($map-break-points, $break-point)
+    @media all and (#{$min-max}-#{$measure}: map-get($map-break-points, $break-point))
+      @content
+  @else
+    @warn "No es posible establecer media queries que no estén en el rango del mapa $map-break-points, #{$break-point} no permitido"
 
 // Ejemplo de uso:
 //  html, body
