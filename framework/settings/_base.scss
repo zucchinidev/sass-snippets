@@ -632,3 +632,64 @@
 .no-pad {
   @extend %no-padding;
 }
+
+
+
+$simbol: '\\+';
+$margin: 'm';
+$marginTop: 'mt';
+$marginLeft: 'ml';
+$marginRight: 'mr';
+$marginBottom: 'mb';
+$padding: 'p';
+$paddingTop: 'pt';
+$paddingLeft: 'pl';
+$paddingRight: 'pr';
+$paddingBottom: 'pb';
+@for $value from 10 through 40 {
+    @if $value % 10 == 0 {
+        $value: $value * 1px;
+        $margin: $margin + $simbol;
+        .#{$margin} {
+            margin: $value;
+        }
+        $marginTop: $marginTop + $simbol;
+        .#{$marginTop} {
+            margin-top: $value;
+        }
+        $marginLeft: $marginLeft + $simbol;
+        .#{$marginLeft} {
+            margin-left: $value;
+        }
+        $marginRight: $marginRight + $simbol;
+        .#{$marginRight} {
+            margin-right: $value;
+        }
+        $marginBottom: $marginBottom + $simbol;
+        .#{$marginBottom} {
+            margin-bottom: $value;
+        }
+
+
+        $padding: $padding + $simbol;
+        .#{$padding} {
+            padding: $value;
+        }
+        $paddingTop: $paddingTop + $simbol;
+        .#{$paddingTop} {
+            padding-top: $value;
+        }
+        $paddingLeft: $paddingLeft + $simbol;
+        .#{$paddingLeft} {
+            padding-left: $value;
+        }
+        $paddingRight: $paddingRight + $simbol;
+        .#{$paddingRight} {
+            padding-right: $value;
+        }
+        $paddingBottom: $paddingBottom + $simbol;
+        .#{$paddingBottom} {
+            padding-bottom: $value;
+        }
+    }
+}
